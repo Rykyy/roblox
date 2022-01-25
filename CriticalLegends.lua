@@ -36,7 +36,7 @@ local namafile = plyr.Name.."_bmhop_settings.CL"
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local StatsChange = ReplicatedStorage:WaitForChild("Remotes"):WaitForChild("StatsChange")
 local Curr_Weapon = nil
-local pesan = loadstring(game:HttpGet(("https://raw.githubusercontent.com/Rykyy/secret/main/pesan.lua"),true))()
+local pesan = loadstring(game:HttpGet(("https://raw.githubusercontent.com/Rykyy/roblox/scripts/pesan.lua"),true))()
 
 -- // Table \\ --
 local bmTable = {"DIO's Bone", "Mana Water", "Mana Knife", "Wind Boots", "Holy Cross", "HP", "Crimson Heart", "Ring of Darkness", "Fighter Spirit", "Chop", "Icy Disable Scroll", "Shield Breaker", "Event Upgrade Ticket", "Crown of the King", "Ichor Torch", "Raging Storm Scroll", "Blood Thirst", "Floral Entrapment Scroll", "Health Drink", "Radis Diary", "Book of the Coven", "Lucky Gold Ticket"}
@@ -274,7 +274,7 @@ end)
 memuat()
 
 -- // Library Ui \\ --
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Rykyy/secret/main/library.lua"))()
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Rykyy/roblox/scripts/uilibrary.lua"))()
 local window = library:CreateWindow("Critical Legends")
 local bmhop = library:CreateWindow("BM Server Hop")
 local teleports = library:CreateWindow("Character Teleports")
