@@ -1,4 +1,4 @@
--- // ADA TONG BUAHAHAHAHA \\ -- [Indonesia Bossque]
+-- // Extra \\ -- [Indonesia Bossque]
 
 for _,patung in pairs(game:GetService("Workspace").Statues:GetDescendants()) do
     if patung.Name == "CombatStyle" and patung.Value == 33 then
