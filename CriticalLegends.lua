@@ -1,4 +1,4 @@
--- // Extra \\ -- [Indonesia Bossque]
+-- // ADA TONG BUAHAHAHAHA \\ -- [Indonesia Bossque]
 
 for _,patung in pairs(game:GetService("Workspace").Statues:GetDescendants()) do
     if patung.Name == "CombatStyle" and patung.Value == 33 then
@@ -32,7 +32,7 @@ getgenv().statues = nil
 
 -- // Variable \\ --
 local plyr = game.Players.LocalPlayer
-local namafile = plyr.Name.."_bmhop_settings.CL"
+local namafile = plyr.DisplayName.."["..plyr.Name.."]".."_bmserverhop.CL"
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local StatsChange = ReplicatedStorage:WaitForChild("Remotes"):WaitForChild("StatsChange")
 local Curr_Weapon = nil
@@ -181,6 +181,18 @@ function infPass() -- Made By Idk Who??
 end
 
 function farmMob()
+    local gOdMoDe
+    gOdMoDe = hookmetamethod(game, "__namecall", function(self, ...)
+        local method = getnamecallmethod()
+        local args = {...}
+
+        if not checkcaller() and self.Name == "Damage" and args[3] ~= nil and method == "FireServer" then
+            return;
+        end
+
+        return gOdMoDe(self, ...)
+    end)
+    
     while task.wait() do
         if getgenv().farm then
             if getgenv().mob ~= nil and getgenv().mob ~= "Select Mob" then
@@ -260,33 +272,28 @@ function addStat()
 end
 
 game:GetService("Workspace").Stalls["Black Market"].ChildAdded:Connect(function(v)
-    for i,name in pairs(v:GetDescendants()) do
-        if name.ClassName == "MeshPart" and name.Name ~= "Grani" then
-            pesan.msg("Black Market Notification!", "Black Market Spawned!\nItem : "..name.Name, 2.5)
-        end
-    end
+    pesan.msg("Black Market Notification!", "Black Market Spawned", 2.5)
 end)
 
-game:GetService("Workspace").Stalls["Black Market"].ChildRemoved:Connect(function(v)
+game:GetService("Workspace").Stalls["Black Market"].ChildRemoved:Connect(function()
     pesan.msg("Black Market Notification!", "Black Market Despawned!", 2.5)  
 end)
 
 memuat()
+
 
 -- // Library Ui \\ --
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Rykyy/roblox/scripts/uilibrary.lua"))()
 local window = library:CreateWindow("Critical Legends")
 local bmhop = library:CreateWindow("BM Server Hop")
 local teleports = library:CreateWindow("Character Teleports")
-local credit = library:CreateWindow("Credits")
-
-
 
 local farm = window:AddFolder("Auto Farm")
 local material = window:AddFolder("Auto Collect Material")
 local stats = window:AddFolder("Auto Stats")
 local misc = window:AddFolder("Misc")
 
+pesan.msg("Notification!", "This Script Made By Rykyy#0001\n"..plyr.DisplayName.." - Thanks For Using My Script ~~~~~~", 10)
 
 window:AddButton({text = "Destroy UI", callback = function()
     library:Close()
@@ -301,24 +308,6 @@ farm:AddToggle({text = "Enabled", state = false, flag = "enabled_f", callback = 
 
     if bool then
         farmMob()
-    end
-end})
-
-farm:AddToggle({text = "God Mode", state = false, flag = "enabled_g", callback = function(bool)
-    godmode = bool
-
-    if godmode then
-        local gOdMoDe
-        gOdMoDe = hookmetamethod(game, "__namecall", function(self, ...)
-            local method = getnamecallmethod()
-            local args = {...}
-
-            if not checkcaller() and self.Name == "Damage" and args[3] ~= nil and method == "FireServer" then
-                return;
-            end
-
-            return gOdMoDe(self, ...)
-        end)
     end
 end})
 
@@ -370,16 +359,14 @@ end})
 
 misc:AddToggle({text = "Enabled", state = false, flag = "enabled_p", callback = function(bool)
     getgenv().infpass = bool
+
+    if getgenv().infpass and getgenv().passitem ~= nil and getgenv().passitem ~= "Select Passive Items" then
+        pesan.msg("Infinity PassiveItem Notification!", "If you feel your stats are enough. Please Press Active Infinity Passive!", 30)
+    end
+
     if bool then
         infPass()
-        wait(0.5)
-        while wait() do
-            if getgenv().passitem ~= nil and getgenv().passitem ~= "Select Passive Items" and getgenv().infpass then
-                pesan.msg("Inf Passive Items Notification!", "If you feel your stats are enough. Please Press Active Infinity Passive!", 50)
-                return nil
-            end
-        end
-    end
+    end    
 end})
 
 misc:AddButton({text = "Active Inf Passive Items", callback = function()
@@ -469,13 +456,5 @@ bmhop:AddToggle({text = "Enabled", state = _G.settingsTable.toggle, flag = "enab
 end})
 
 bmhop:AddButton({text = "Server Hop", callback = function() shop() end})
-
-credit:AddButton({text = "Rykyy -- BM Serverhop,ETC"})
-credit:AddLabel({text = "<=====>"})
-credit:AddButton({text = "Idk Who?? -- Inf Passive"})
-credit:AddLabel({text = "<=====>"})
-credit:AddButton({text = "BoredStuff2 -- Notify Ui"})
-credit:AddLabel({text = "<=====>"})
-credit:AddButton({text = "Wally -- Ui Library"})
 
 library:Init()
