@@ -425,7 +425,7 @@ local function createBind(option, parent)
 		Text = " " .. option.text,
 		TextSize = 17,
 		Font = Enum.Font.Gotham,
-		TextColor3 = Color3.fromRGB(255, 255, 255),
+		TextColor3 = Color3.fromRGB(255, 100, 100),
 		TextXAlignment = Enum.TextXAlignment.Left,
 		Parent = parent.content
 	})
@@ -436,7 +436,7 @@ local function createBind(option, parent)
 		SizeConstraint = Enum.SizeConstraint.RelativeYY,
 		BackgroundTransparency = 1,
 		Image = "rbxassetid://3570695787",
-		ImageColor3 = Color3.fromRGB(40, 40, 40),
+		ImageColor3 = Color3.fromRGB(230, 230, 230),
 		ScaleType = Enum.ScaleType.Slice,
 		SliceCenter = Rect.new(100, 100, 100, 100),
 		SliceScale = 0.02,
@@ -449,16 +449,23 @@ local function createBind(option, parent)
 		Text = text,
 		TextSize = 16,
 		Font = Enum.Font.Gotham,
-		TextColor3 = Color3.fromRGB(255, 255, 255),
+		TextColor3 = Color3.fromRGB(0, 0, 0),
 		Parent = round
 	})
-	
+
+    local bindgradient = library:Create("UIGradient", {
+        Name = "Beautify",
+        Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255,100,100)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 255, 255))},
+        Parent = round
+    })
+
+
 	local inContact
 	main.InputBegan:connect(function(input)
 		if input.UserInputType == Enum.UserInputType.MouseMovement then
 			inContact = true
 			if not binding then
-				tweenService:Create(round, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(60, 60, 60)}):Play()
+				tweenService:Create(round, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(250, 250, 250)}):Play()
 			end
 		end
 	end)
@@ -467,12 +474,12 @@ local function createBind(option, parent)
 		if input.UserInputType == Enum.UserInputType.MouseButton1 then
 			binding = true
 			bindinput.Text = "..."
-			tweenService:Create(round, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(255, 65, 65)}):Play()
+			tweenService:Create(round, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(255, 100, 100)}):Play()
 		end
 		if input.UserInputType == Enum.UserInputType.MouseMovement then
 			inContact = false
 			if not binding then
-				tweenService:Create(round, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(40, 40, 40)}):Play()
+				tweenService:Create(round, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(230, 230, 230)}):Play()
 			end
 		end
 	end)
@@ -1657,9 +1664,10 @@ end
 
 local UIToggle
 local UnlockMouse
+local LibName = tostring(math.random(1, 100))..tostring(math.random(1,50))..tostring(math.random(1, 100))
+
 function library:Init()
-	
-	self.base = self.base or self:Create("ScreenGui")
+	self.base = self.base or self:Create("ScreenGui", {Name = LibName})
 	if syn and syn.protect_gui then
 		syn.protect_gui(self.base)
 	elseif get_hidden_gui then
@@ -1674,6 +1682,14 @@ function library:Init()
 			loadOptions(window)
 		end
 	end
+end
+
+function library:ToggleUi()
+    if game.CoreGui[LibName].Enabled then
+        game.CoreGui[LibName].Enabled = false
+    else
+        game.CoreGui[LibName].Enabled = true
+    end
 end
 
 function library:Close()
