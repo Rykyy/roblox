@@ -436,7 +436,7 @@ local function createBind(option, parent)
 		SizeConstraint = Enum.SizeConstraint.RelativeYY,
 		BackgroundTransparency = 1,
 		Image = "rbxassetid://3570695787",
-		ImageColor3 = Color3.fromRGB(230, 230, 230),
+		ImageColor3 = Color3.fromRGB(40, 40, 40),
 		ScaleType = Enum.ScaleType.Slice,
 		SliceCenter = Rect.new(100, 100, 100, 100),
 		SliceScale = 0.02,
@@ -449,7 +449,7 @@ local function createBind(option, parent)
 		Text = text,
 		TextSize = 16,
 		Font = Enum.Font.Gotham,
-		TextColor3 = Color3.fromRGB(0, 0, 0),
+		TextColor3 = Color3.fromRGB(255, 255, 255),
 		Parent = round
 	})
 
@@ -465,7 +465,7 @@ local function createBind(option, parent)
 		if input.UserInputType == Enum.UserInputType.MouseMovement then
 			inContact = true
 			if not binding then
-				tweenService:Create(round, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(250, 250, 250)}):Play()
+				tweenService:Create(round, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(60, 60, 60)}):Play()
 			end
 		end
 	end)
@@ -479,7 +479,7 @@ local function createBind(option, parent)
 		if input.UserInputType == Enum.UserInputType.MouseMovement then
 			inContact = false
 			if not binding then
-				tweenService:Create(round, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(230, 230, 230)}):Play()
+				tweenService:Create(round, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(40, 40, 40)}):Play()
 			end
 		end
 	end)
@@ -1664,7 +1664,7 @@ end
 
 local UIToggle
 local UnlockMouse
-local LibName = tostring(math.random(1, 100))..tostring(math.random(1,50))..tostring(math.random(1, 100))
+local LibName = string.char(math.random(32,126))..string.char(math.random(32,126))..string.char(math.random(32,126))..string.char(math.random(32,126))..string.char(math.random(32,126))..string.char(math.random(32,126))..string.char(math.random(32,126))..string.char(math.random(32,126))
 
 function library:Init()
 	self.base = self.base or self:Create("ScreenGui", {Name = LibName})
