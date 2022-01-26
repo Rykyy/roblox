@@ -425,7 +425,7 @@ local function createBind(option, parent)
 		Text = " " .. option.text,
 		TextSize = 17,
 		Font = Enum.Font.Gotham,
-		TextColor3 = Color3.fromRGB(255, 100, 100),
+		TextColor3 = Color3.fromRGB(255, 255, 255),
 		TextXAlignment = Enum.TextXAlignment.Left,
 		Parent = parent.content
 	})
@@ -436,7 +436,7 @@ local function createBind(option, parent)
 		SizeConstraint = Enum.SizeConstraint.RelativeYY,
 		BackgroundTransparency = 1,
 		Image = "rbxassetid://3570695787",
-		ImageColor3 = Color3.fromRGB(230, 230, 230),
+		ImageColor3 = Color3.fromRGB(40, 40, 40),
 		ScaleType = Enum.ScaleType.Slice,
 		SliceCenter = Rect.new(100, 100, 100, 100),
 		SliceScale = 0.02,
@@ -465,7 +465,7 @@ local function createBind(option, parent)
 		if input.UserInputType == Enum.UserInputType.MouseMovement then
 			inContact = true
 			if not binding then
-				tweenService:Create(round, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(250, 250, 250)}):Play()
+				tweenService:Create(round, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(60, 60, 60)}):Play()
 			end
 		end
 	end)
@@ -479,7 +479,7 @@ local function createBind(option, parent)
 		if input.UserInputType == Enum.UserInputType.MouseMovement then
 			inContact = false
 			if not binding then
-				tweenService:Create(round, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(230, 230, 230)}):Play()
+				tweenService:Create(round, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(40, 40, 40)}):Play()
 			end
 		end
 	end)
@@ -581,7 +581,7 @@ local function createSlider(option, parent)
 	local fill = library:Create("ImageLabel", {
 		BackgroundTransparency = 1,
 		Image = "rbxassetid://3570695787",
-		ImageColor3 = Color3.fromRGB(228, 92, 255),
+		ImageColor3 = Color3.fromRGB(255, 100, 100),
 		ScaleType = Enum.ScaleType.Slice,
 		SliceCenter = Rect.new(100, 100, 100, 100),
 		SliceScale = 0.02,
@@ -635,7 +635,7 @@ local function createSlider(option, parent)
 	local inContact
 	main.InputBegan:connect(function(input)
 		if input.UserInputType == Enum.UserInputType.MouseButton1 then
-			tweenService:Create(fill, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(228, 92, 255)}):Play()
+			tweenService:Create(fill, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(255, 100, 100)}):Play()
 			tweenService:Create(circle, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(3.5, 0, 3.5, 0), ImageColor3 = Color3.fromRGB(255, 100, 100)}):Play()
 			sliding = true
 			option:SetValue(option.min + ((input.Position.X - slider.AbsolutePosition.X) / slider.AbsoluteSize.X) * (option.max - option.min))
@@ -643,7 +643,7 @@ local function createSlider(option, parent)
 		if input.UserInputType == Enum.UserInputType.MouseMovement then
 			inContact = true
 			if not sliding then
-				tweenService:Create(fill, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(228, 92, 255)}):Play()
+				tweenService:Create(fill, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(255, 100, 100)}):Play()
 				tweenService:Create(circle, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(2.8, 0, 2.8, 0), ImageColor3 = Color3.fromRGB(255, 100, 100)}):Play()
 			end
 		end
@@ -659,10 +659,10 @@ local function createSlider(option, parent)
 		if input.UserInputType == Enum.UserInputType.MouseButton1 then
 			sliding = false
 			if inContact then
-				tweenService:Create(fill, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(228, 92, 255)}):Play()
+				tweenService:Create(fill, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(255, 100, 100)}):Play()
 				tweenService:Create(circle, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(2.8, 0, 2.8, 0), ImageColor3 = Color3.fromRGB(255, 100, 100)}):Play()
 			else
-				tweenService:Create(fill, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(228, 92, 255)}):Play()
+				tweenService:Create(fill, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(255, 100, 100)}):Play()
 				tweenService:Create(circle, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(0, 0, 0, 0), ImageColor3 = Color3.fromRGB(255, 100, 100)}):Play()
 			end
 		end
@@ -670,7 +670,7 @@ local function createSlider(option, parent)
 			inContact = false
 			inputvalue:ReleaseFocus()
 			if not sliding then
-				tweenService:Create(fill, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(228, 92, 255)}):Play()
+				tweenService:Create(fill, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(255, 100, 100)}):Play()
 				tweenService:Create(circle, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(0, 0, 0, 0), ImageColor3 = Color3.fromRGB(228, 92, 255)}):Play()
 			end
 		end
@@ -1664,7 +1664,7 @@ end
 
 local UIToggle
 local UnlockMouse
-local LibName = tostring(math.random(1, 100))..tostring(math.random(1,50))..tostring(math.random(1, 100))
+local LibName = string.char(math.random(32,126))..string.char(math.random(32,126))..string.char(math.random(32,126))..string.char(math.random(32,126))..string.char(math.random(32,126))..string.char(math.random(32,126))..string.char(math.random(32,126))..string.char(math.random(32,126)))
 
 function library:Init()
 	self.base = self.base or self:Create("ScreenGui", {Name = LibName})
