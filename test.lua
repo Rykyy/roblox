@@ -449,7 +449,7 @@ local function createBind(option, parent)
 		Text = text,
 		TextSize = 16,
 		Font = Enum.Font.Gotham,
-		TextColor3 = Color3.fromRGB(0, 0, 0),
+		TextColor3 = Color3.fromRGB(255, 255, 255),
 		Parent = round
 	})
 
@@ -848,8 +848,8 @@ local function createList(option, parent, holder)
 			if input.UserInputType == Enum.UserInputType.MouseButton1 then
 				clicking = true
 				tweenService:Create(label, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(10, 10, 10)}):Play()
+                library.activePopup:Close()
 				self:SetValue(value)
-				library.activePopup:Close()
 			end
 			if input.UserInputType == Enum.UserInputType.MouseMovement then
 				inContact = true
