@@ -1664,7 +1664,7 @@ end
 
 local UIToggle
 local UnlockMouse
-local LibName = string.char(math.random(32,126))..string.char(math.random(32,126))..string.char(math.random(32,126))..string.char(math.random(32,126))..string.char(math.random(32,126))..string.char(math.random(32,126))..string.char(math.random(32,126))..string.char(math.random(32,126)))
+local LibName = string.char(math.random(32,126))..string.char(math.random(32,126))..string.char(math.random(32,126))..string.char(math.random(32,126))..string.char(math.random(32,126))..string.char(math.random(32,126))..string.char(math.random(32,126))..string.char(math.random(32,126))
 
 function library:Init()
 	self.base = self.base or self:Create("ScreenGui", {Name = LibName})
