@@ -296,10 +296,6 @@ local misc = window:AddFolder("Misc")
 
 pesan.msg(gameName, "This Script Made By Rykyy#0001\n".."~~~"..plyr.DisplayName.."~~~ Thanks For Using My Script.", 10)
 
-window:AddButton({text = "Destroy UI", callback = function()
-    library:Close()
-end})
-
 farm:AddList({text = "Mob List", values = mobTable , value = "Select Mob", flag = "mob_list", callback = function(selected)
     getgenv().mob = selected
 end})
@@ -397,6 +393,16 @@ end})
 
 misc:AddSlider({text = "JumpPower", min = 50, max = 250, value = 50, callback = function(s)
     plyr.Character.Humanoid.JumpPower = s
+end})
+
+misc:AddLabel({text = "~~Ui Settings"})
+
+misc:AddBind({text = "Ui Toggle", key = Enum.KeyCode.RightAlt, callback = function()
+    library:ToggleUi()
+end})
+
+misc:AddButton({text = "Destroy UI", callback = function()
+    library:Close()
 end})
 
 teleports:AddList({text = "Statues", values = statuesTable, value = "Select Statues", flag = "statue_list", callback = function(selected)
