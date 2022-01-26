@@ -33,6 +33,7 @@ getgenv().statues = nil
 -- // Variable \\ --
 local plyr = game.Players.LocalPlayer
 local namafile = plyr.DisplayName.."["..plyr.Name.."]".."_bmserverhop.CL"
+local gameName = game:GetService('MarketplaceService'):GetProductInfo(game.PlaceId).Name
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local StatsChange = ReplicatedStorage:WaitForChild("Remotes"):WaitForChild("StatsChange")
 local Curr_Weapon = nil
@@ -293,7 +294,7 @@ local material = window:AddFolder("Auto Collect Material")
 local stats = window:AddFolder("Auto Stats")
 local misc = window:AddFolder("Misc")
 
-pesan.msg("Notification!", "This Script Made By Rykyy#0001\n"..plyr.DisplayName.." - Thanks For Using My Script ~~~~~~", 10)
+pesan.msg(gameName, "This Script Made By Rykyy#0001\n".."~~~"..plyr.DisplayName.."~~~ Thanks For Using My Script.", 10)
 
 window:AddButton({text = "Destroy UI", callback = function()
     library:Close()
