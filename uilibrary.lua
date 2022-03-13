@@ -917,7 +917,9 @@ local function createList(option, parent, holder)
 				valueCount = valueCount - 1
 			end
 		end
-        option:SetValue("Refreshed!")
+        if self.value == value then
+			self:SetValue("Refreshed!!!")
+		end
         for i,v in next, newList do
             option:AddValue(v)
         end
