@@ -910,7 +910,20 @@ local function createList(option, parent, holder)
 		listvalue.Text = self.value
 		self.callback(value)
 	end
-	
+	function option:Refresh(newList)
+        for _,label in next, content:GetChildren() do
+			if label:IsA"TextLabel"  then
+				label:Destroy()
+				valueCount = valueCount - 1
+			end
+		end
+        if self.value == value then
+			self:SetValue("")
+		end
+        for i,v in next, newList do
+            option:AddValue(v)
+        end
+    end
 	function option:Close()
 		library.activePopup = nil
 		self.open = false
