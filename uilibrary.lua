@@ -919,8 +919,8 @@ local function createList(option, parent, holder)
 		end
         for i,v in next, newList do
             option:AddValue(v)
-            self:SetValue("Refreshed!!!")
         end
+        self:SetValue("Refreshed!!!")
     end
 	function option:Close()
 		library.activePopup = nil
