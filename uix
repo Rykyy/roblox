@@ -24,7 +24,7 @@ for i,v in pairs(game:GetService("CoreGui"):GetDescendants()) do
 	end
 end
 
-CoastifiedLibrary.Name = "Random GUi"
+CoastifiedLibrary.Name = "Random GUI"
 CoastifiedLibrary.Parent = game:GetService("CoreGui")
 
 Container.Name = "Container"
