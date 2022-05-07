@@ -19,12 +19,12 @@ local FolderKeep = Instance.new("Folder")
 
 
 for i,v in pairs(game:GetService("CoreGui"):GetDescendants()) do
-	if v.Name == "BKHAXGUI" then
+	if v.Name == "Random GUI" then
 		v:Destroy()
 	end
 end
 
-CoastifiedLibrary.Name = "BKHAXGUI"
+CoastifiedLibrary.Name = "Random GUi"
 CoastifiedLibrary.Parent = game:GetService("CoreGui")
 
 Container.Name = "Container"
