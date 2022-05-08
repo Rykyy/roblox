@@ -1,5 +1,3 @@
--- Made By Idk
-
 local TweenService = game:GetService("TweenService")
 local RunService = game:GetService("RunService")
 local HttpService = game:GetService("HttpService")
@@ -1317,8 +1315,8 @@ function Library:CreateTab(name)
             local function Refresh(newoptions, newpresetoption, newcallback)
                 ClearAllDropdownItems()
 
-                
-                TitleToggle.Text = (name .. " - " .. newpresetoption)
+                local NewSelectedOption = newoptions[newpresetoption]
+                TitleToggle.Text = (name.." - ".. NewSelectedOption)
 
                 for i, v in pairs(newoptions) do
                     local NameButton = Instance.new("TextButton")
@@ -1336,14 +1334,14 @@ function Library:CreateTab(name)
                     NameButton.TextColor3 = Color3.fromRGB(255, 255, 255)
                     NameButton.TextSize = 15.000
     
-                    if v == SelectedOption then
+                    if v == NewSelectedOption then
                         NameButton.TextColor3 = Library.Theme.MainColor
                     end
     
                     NameButton.MouseButton1Down:Connect(function()
-                        SelectedOption = v
+                        NewSelectedOption = v
                         ResetAllDropdownItems()
-                        TitleToggle.Text = (name .. " - " .. SelectedOption)
+                        TitleToggle.Text = (name .. " - " .. NewSelectedOption)
                         TweenService:Create(NameButton, TweenInfo.new(0.35, Library.Theme.EasingStyle, Enum.EasingDirection.Out), {TextColor3 = Library.Theme.MainColor}):Play()
                         newcallback(NameButton.Text)
                     end)
