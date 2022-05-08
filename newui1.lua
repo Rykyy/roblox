@@ -1315,8 +1315,7 @@ function Library:CreateTab(name)
             local function Refresh(newoptions, newpresetoption, newcallback)
                 ClearAllDropdownItems()
 
-                local NewSelectedOption = newoptions[newpresetoption]
-                TitleToggle.Text = (name.." - ".. NewSelectedOption)
+                TitleToggle.Text = (name.." - ".. newpresetoption)
 
                 for i, v in pairs(newoptions) do
                     local NameButton = Instance.new("TextButton")
@@ -1334,14 +1333,13 @@ function Library:CreateTab(name)
                     NameButton.TextColor3 = Color3.fromRGB(255, 255, 255)
                     NameButton.TextSize = 15.000
     
-                    if v == NewSelectedOption then
+                    if v == newoptions[1] then
                         NameButton.TextColor3 = Library.Theme.MainColor
                     end
     
                     NameButton.MouseButton1Down:Connect(function()
-                        NewSelectedOption = v
                         ResetAllDropdownItems()
-                        TitleToggle.Text = (name .. " - " .. NewSelectedOption)
+                        TitleToggle.Text = (name .. " - " .. v)
                         TweenService:Create(NameButton, TweenInfo.new(0.35, Library.Theme.EasingStyle, Enum.EasingDirection.Out), {TextColor3 = Library.Theme.MainColor}):Play()
                         newcallback(NameButton.Text)
                     end)
