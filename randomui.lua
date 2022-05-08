@@ -1338,13 +1338,14 @@ function Library:CreateTab(name)
                 end
             end)
 
-            function dropFunc:Refresh(newoptions, newpresetoption)
+            function dropFunc:Refresh(newoptions, newpresetoption, madebyryyky)
                 newoptions = newoptions or {}
                 newpresetoption = newpresetoption or 1
                 ClearAllDropdownItems()
 
+                TitleToggle.Text = (name.." - ".. madebyryyk)
+
                 local SelectedOption = newoptions[newpresetoption]
-                TitleToggle.Text = (name.." - ".. SelectedOption)
     
 
                 for i, v in next, newoptions do
