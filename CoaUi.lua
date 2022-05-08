@@ -422,7 +422,7 @@ function Library:CreateTab(name)
             NameLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
             NameLabel.BackgroundTransparency = 1.000
             NameLabel.Text = text
-            NameLabel.Size = UDim2.new(0, 7, 0, 15)
+            NameLabel.Size = UDim2.new(0, 197, 0, 25)
             NameLabel.ZIndex = 5
             NameLabel.Font = Library.Theme.TextFont
             NameLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
