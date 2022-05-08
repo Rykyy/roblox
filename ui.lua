@@ -355,7 +355,7 @@ function Library:CreateTab(name)
         NameSection.BackgroundColor3 = Library.Theme.MainColor
         NameSection.BackgroundTransparency = 1.000
         NameSection.Position = UDim2.new(0, 0, 0.0574162677, 0)
-        NameSection.Size = UDim2.new(0, 197, 0, 181)
+        NameSection.Size = UDim2.new(0, 197, NameSection.TextBounds.Y)
         NameSection.ZIndex = 4
         NameSection.Image = "rbxassetid://3570695787"
         NameSection.ImageColor3 = Library.Theme.BackgroundColor
@@ -412,18 +412,17 @@ function Library:CreateTab(name)
             SectionContent.CanvasSize = UDim2.new(0, 0, 0, SectionContentLayout.AbsoluteContentSize.Y + 15)
         end)
 
-        function SectionElements:CreateLabel(name, text)
-            name = name or "Label"
-            text = text or "Made By IDK"
+        function SectionElements:CreateLabel(text)
+            text = text or "Label"
 
             local NameLabel = Instance.new("TextLabel")
 
-            NameLabel.Name = (name .. "Label")
+            NameLabel.Name = "Label"
             NameLabel.Parent = SectionContent
             NameLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
             NameLabel.BackgroundTransparency = 1.000
             NameLabel.Text = text
-            NameLabel.Size = UDim2.new(0, 197, 0, NameLabel.TextBounds.Y)
+            NameLabel.Size = UDim2.new(0, 197, 0, 181)
             NameLabel.ZIndex = 5
             NameLabel.Font = Library.Theme.TextFont
             NameLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
