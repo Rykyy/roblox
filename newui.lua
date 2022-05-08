@@ -440,6 +440,9 @@ function Library:CreateTab(name)
         end
 
         function SectionElements:CreateButton(name, callback)
+            name = name or "Button"
+            callback = callback or function() end
+
             local NameButton = Instance.new("Frame")
             local Button = Instance.new("TextButton")
             local ButtonRounded = Instance.new("ImageLabel")
@@ -502,6 +505,9 @@ function Library:CreateTab(name)
         end
 
         function SectionElements:CreateToggle(name, callback)
+            name = name or "Toggle"
+            callback = callback or function() end
+
             local NameToggle = Instance.new("Frame")
             local Title = Instance.new("TextLabel")
             local Toggle = Instance.new("TextButton")
@@ -602,6 +608,14 @@ function Library:CreateTab(name)
         end
 
         function SectionElements:CreateSlider(name, minimumvalue, maximumvalue, presetvalue, precisevalue, callback)
+            name = name or "Slider"
+            minimumvalue = minimumvalue or 0
+            maximumvalue = maximumvalue or 500
+            presetvalue = presetvalue or 0
+            precisevalue = precisevalue or 1
+            callback = callback or function() end
+
+
             local NameSlider = Instance.new("Frame")
             local Title = Instance.new("TextLabel")
             local SliderBackground = Instance.new("ImageLabel")
@@ -763,6 +777,10 @@ function Library:CreateTab(name)
         end
 
         function SectionElements:CreateColorPicker(name, presetcolor, callback)
+            name = name or "ColorPicker"
+            presetcolor = presetcolor or Color3.fromRGB(1,1,1)
+            callback = callback or function() end
+
             local NameColorPicker = Instance.new("Frame")
             local Title = Instance.new("TextLabel")
             local ColorPickerToggle = Instance.new("ImageButton")
@@ -1185,6 +1203,13 @@ function Library:CreateTab(name)
         end
 
         function SectionElements:CreateDropdown(name, options, presetoption, callback)
+            name = name or "Name"
+            options = options or {}
+            presetoption = presetoption or 1
+            callback = callback or function() end
+
+  
+
             local NameDropdown = Instance.new("Frame")
             local TitleToggle = Instance.new("TextButton")
             local Dropdown = Instance.new("ImageLabel")
@@ -1255,7 +1280,7 @@ function Library:CreateTab(name)
                 TweenService:Create(Dropdown, TweenInfo.new(0.5, Library.Theme.EasingStyle, Enum.EasingDirection.Out), {Size = UDim2.new(0, 165, 0, 0)}):Play()
             end
 
-            for i, v in pairs(options) do
+            for i, v in next, options do
                 local NameButton = Instance.new("TextButton")
 
                 NameButton.Name = (v .. "DropdownButton")
@@ -1312,14 +1337,18 @@ function Library:CreateTab(name)
                 end
             end)
 
-            local function Refresh(newoptions, newpresetoption, newcallback)
+            local function Refresh(newoptions, newpresetoption)
+                newoptions = newoptions or {}
+                newpresetoption = newpresetoption or 1
                 ClearAllDropdownItems()
 
-                TitleToggle.Text = (name.." - ".. newpresetoption)
-
-                for i, v in pairs(newoptions) do
-                    local NameButton = Instance.new("TextButton")
+                local SelectedOption = newoptions[newpresetoption]
+                TitleToggle.Text = (name.." - "..SelectedOption)
     
+
+                for i, v in next, newoptions do
+                    local NameButton = Instance.new("TextButton")
+
                     NameButton.Name = (v .. "Button")
                     NameButton.Parent = Dropdown
                     NameButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -1333,15 +1362,15 @@ function Library:CreateTab(name)
                     NameButton.TextColor3 = Color3.fromRGB(255, 255, 255)
                     NameButton.TextSize = 15.000
     
-                    if v == newoptions[1] then
+                    if v == SelectedOption then
                         NameButton.TextColor3 = Library.Theme.MainColor
                     end
     
                     NameButton.MouseButton1Down:Connect(function()
+                        SelectedOption = v
                         ResetAllDropdownItems()
-                        TitleToggle.Text = (name .. " - " .. v)
+                        TitleToggle.Text = (name .. " - " .. SelectedOption)
                         TweenService:Create(NameButton, TweenInfo.new(0.35, Library.Theme.EasingStyle, Enum.EasingDirection.Out), {TextColor3 = Library.Theme.MainColor}):Play()
-                        newcallback(NameButton.Text)
                     end)
     
                     NameButton.InputBegan:Connect(function(input)
@@ -1357,13 +1386,16 @@ function Library:CreateTab(name)
                     end)
                 end
             end
-
             return {
                 Refresh = Refresh
             }
         end
 
         function SectionElements:CreateKeybind(name, presetbind, keyboardonly, holdmode, callback)
+            name = name or "KeyBind"
+            holdmode = holdmode or false
+            callback = callback or function() end
+
             local NameKeybind = Instance.new("Frame")
             local Title = Instance.new("TextLabel")
             local KeybindButtonBorder = Instance.new("ImageLabel")
