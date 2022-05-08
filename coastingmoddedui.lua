@@ -1203,6 +1203,7 @@ function Library:CreateTab(name)
         end
 
         function SectionElements:CreateDropdown(name, options, presetoption, callback)
+            local dropFunc = {}
             name = name or "Name"
             options = options or {}
             presetoption = presetoption or 1
@@ -1337,13 +1338,13 @@ function Library:CreateTab(name)
                 end
             end)
 
-            local function Refresh(newoptions, newpresetoption)
+            function dropFunc:Refresh(newoptions, newpresetoption)
                 newoptions = newoptions or {}
                 newpresetoption = newpresetoption or 1
                 ClearAllDropdownItems()
 
                 local SelectedOption = newoptions[newpresetoption]
-                TitleToggle.Text = (name.." - "..SelectedOption)
+                TitleToggle.Text = (name.." - ".. SelectedOption)
     
 
                 for i, v in next, newoptions do
@@ -1386,9 +1387,7 @@ function Library:CreateTab(name)
                     end)
                 end
             end
-            return {
-                Refresh = Refresh
-            }
+            return dropFunc
         end
 
         function SectionElements:CreateKeybind(name, presetbind, keyboardonly, holdmode, callback)
