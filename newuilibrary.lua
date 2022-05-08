@@ -267,6 +267,8 @@ end)()
 
 
 function Library:CreateTab(name)
+    name = name or "Tab"
+
     local NameTab = Instance.new("Frame")
     local NameTabButton = Instance.new("ImageButton")
     local Title = Instance.new("TextLabel")
@@ -338,6 +340,8 @@ function Library:CreateTab(name)
     end)
 
     function TabElements:CreateSection(name)
+        name = name or "Section"
+
         local NameSection = Instance.new("ImageLabel")
         local SectionBorder = Instance.new("ImageLabel")
         local SectionTitle = Instance.new("TextLabel")
