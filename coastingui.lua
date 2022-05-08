@@ -1372,6 +1372,7 @@ function Library:CreateTab(name)
                         ResetAllDropdownItems()
                         TitleToggle.Text = (name .. " - " .. SelectedOption)
                         TweenService:Create(NameButton, TweenInfo.new(0.35, Library.Theme.EasingStyle, Enum.EasingDirection.Out), {TextColor3 = Library.Theme.MainColor}):Play()
+                        callback(NameButton.Text)
                     end)
     
                     NameButton.InputBegan:Connect(function(input)
