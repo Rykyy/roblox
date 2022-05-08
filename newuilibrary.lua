@@ -413,6 +413,9 @@ function Library:CreateTab(name)
         end)
 
         function SectionElements:CreateLabel(name, text)
+            name = name or "Label"
+            text = text or "Made By IDK"
+
             local NameLabel = Instance.new("TextLabel")
 
             NameLabel.Name = (name .. "Label")
