@@ -1315,8 +1315,8 @@ function Library:CreateTab(name)
             local function Refresh(newoptions, newpresetoption, newcallback)
                 ClearAllDropdownItems()
 
-                local SelectedOption = newpresetoption
-                TitleToggle.Text = (name .. " - " .. SelectedOption)
+                
+                TitleToggle.Text = (name .. " - " .. newpresetoption)
 
                 for i, v in pairs(newoptions) do
                     local NameButton = Instance.new("TextButton")
