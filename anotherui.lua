@@ -1315,7 +1315,7 @@ function Library:CreateTab(name)
             local function Refresh(newoptions, newpresetoption, newcallback)
                 ClearAllDropdownItems()
 
-                local SelectedOption = newoptions[newpresetoption]
+                local SelectedOption = newpresetoption
                 TitleToggle.Text = (name .. " - " .. SelectedOption)
 
                 for i, v in pairs(newoptions) do
