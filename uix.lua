@@ -355,7 +355,7 @@ function Library:CreateTab(name)
         NameSection.BackgroundColor3 = Library.Theme.MainColor
         NameSection.BackgroundTransparency = 1.000
         NameSection.Position = UDim2.new(0, 0, 0.0574162677, 0)
-        NameSection.Size = UDim2.new(0, 197, NameSection.TextBounds.Y)
+        NameSection.Size = UDim2.new(0, 197, 0, 181)
         NameSection.ZIndex = 4
         NameSection.Image = "rbxassetid://3570695787"
         NameSection.ImageColor3 = Library.Theme.BackgroundColor
@@ -422,7 +422,7 @@ function Library:CreateTab(name)
             NameLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
             NameLabel.BackgroundTransparency = 1.000
             NameLabel.Text = text
-            NameLabel.Size = UDim2.new(0, 197, 0, 181)
+            NameLabel.Size = UDim2.new(0, NameLabel.TextBounds.X + 5, 0, 22)
             NameLabel.ZIndex = 5
             NameLabel.Font = Library.Theme.TextFont
             NameLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
