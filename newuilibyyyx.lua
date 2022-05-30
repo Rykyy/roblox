@@ -3618,8 +3618,6 @@
             
             list = list or {}
             local multiList = {}
-
-            self:updateDropdown(dropdown, nil, multi, default, list, callback, multiList)
             
             search.Button.MouseButton1Click:Connect(function()
                 if search.Button.Rotation == 0 then
@@ -4050,10 +4048,10 @@
                     end
                     if multi then
                         if table.find(multiList, value) then
-                            table.remove(multiList, table.find(multiList, value))
+                            table.insert(multiList, value)
                             self:updateDropdown(dropdown, def .. " | " .. table.concat(multiList, ", ") or table.concat(multiList, ", "), multi, def, nil, callback, multiList)
                         else
-                            table.insert(multiList, value)
+                            table.remove(multiList, table.find(multiList, value))
                             self:updateDropdown(dropdown, def .. " | " .. table.concat(multiList, ", ") or table.concat(multiList, ", "), multi, def, nil, callback, multiList)
                         end
                     else
