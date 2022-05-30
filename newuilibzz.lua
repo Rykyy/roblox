@@ -4036,17 +4036,23 @@
                 
                 button.MouseButton1Click:Connect(function()
                     if callback then
-                        callback(value, function(...)
-                            self:updateDropdown(dropdown, ...)
-                        end)
+                        if multi then
+                            callback(multiList, function(...)
+                                self:updateDropdown(dropdown, ...)
+                            end)
+                        else
+                            callback(value, function(...)
+                                self:updateDropdown(dropdown, ...)
+                            end)
+                        end
                     end
                     if multi then
                         if table.find(multiList, value) then
                             table.remove(multiList, table.find(multiList, value))
-                            self:updateDropdown(dropdown, def .. " | " .. table.concat(multiList, ", ") or table.concat(multiList, ", "), multi, def, nil, callback, multilist)
+                            self:updateDropdown(dropdown, def .. " | " .. table.concat(multiList, ", ") or table.concat(multiList, ", "), multi, def, nil, callback, multiList)
                         else
                             table.insert(multiList, value)
-                            self:updateDropdown(dropdown, def .. " | " .. table.concat(multiList, ", ") or table.concat(multiList, ", "), multi, def, nil, callback, multilist)
+                            self:updateDropdown(dropdown, def .. " | " .. table.concat(multiList, ", ") or table.concat(multiList, ", "), multi, def, nil, callback, multiList)
                         end
                     else
                         self:updateDropdown(dropdown, def and def .. " | " .. value or value, multi, def, nil, callback)
