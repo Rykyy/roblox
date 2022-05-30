@@ -3447,14 +3447,14 @@
             
             textbox.FocusLost:Connect(function()
                 if not tonumber(textbox.Text) then
-                    textbox.Text = default or min
-                    callback(tonumber(textbox.Text))
+                    value = self:updateSlider(slider, nil, nil, default or min, max, inc)
+                    callback(value)
                 elseif textbox.Text == "" or tonumber(textbox.Text) <= min then
-                    textbox.Text = min
-                    callback(tonumber(textbox.Text))
+                    value = self:updateSlider(slider, nil, nil, min, max, inc)
+                    callback(value)
                 elseif textbox.Text == "" or tonumber(textbox.Text) >= max then
-                    textbox.Text = max
-                    callback(tonumber(textbox.Text))
+                    value = self:updateSlider(slider, nil, nil, max, max, inc)
+                    callback(value)
                 end
 
                 fill.Size = UDim2.new(math.clamp((textbox.Text - min) / (max - min), 0, 1), 0, 1, 0) 
