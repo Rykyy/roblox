@@ -4036,9 +4036,15 @@
                 
                 button.MouseButton1Click:Connect(function()
                     if callback then
-                        callback(value, function(...)
-                            self:updateDropdown(dropdown, ...)
-                        end)
+                        if multi then
+                            callback(multilist, function(...)
+                                self:updateDropdown(dropdown, ...)
+                            end)
+                        else
+                            callback(value, function(...)
+                                self:updateDropdown(dropdown, ...)
+                            end)
+                        end
                     end
                     if multi then
                         if table.find(multiList, value) then
