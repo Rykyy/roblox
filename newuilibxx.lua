@@ -3618,6 +3618,8 @@
             
             list = list or {}
             local multiList = {}
+
+            self:updateDropdown(dropdown, nil, multi, default, list, callback, multilist)
             
             search.Button.MouseButton1Click:Connect(function()
                 if search.Button.Rotation == 0 then
