@@ -3463,16 +3463,14 @@
                 fill.Size = UDim2.new(math.clamp((textbox.Text - min) / (max - min), 0, 1), 0, 1, 0) 
             end)
             
-            --[[textbox:GetPropertyChangedSignal("Text"):Connect(function()
+            textbox:GetPropertyChangedSignal("Text"):Connect(function()
                 local text = textbox.Text
                 
-                if not allowed[text] and not tonumber(text) then
-                    textbox.Text = text:sub(1, #text - 1)
-                elseif not allowed[text] then	
-                    value = self:updateSlider(slider, nil, tonumber(text) or value, min, max)
+                if not allowed[text] then	
+                    value = self:updateSlider(slider, nil, tonumber(text), min, max)
                     callback(value)
                 end
-            end)]]
+            end)
             
             if search then
                 config.Title, config.Default, config.Min, config.Max, config.Increment, config.Callback, config.Search, config.ToolTipText = title, default, min, max, inc, callback, search, ToolTipText
