@@ -1622,12 +1622,12 @@
             return page
         end
         function library:addInfo()
-            local page = page.new({library = self, Position = Enum.VerticalAlignment.Bottom, Title = "Info", icon = 322206910})
+            local page = page.new({library = self, Position = Enum.VerticalAlignment.Bottom, Title = "Info", icon = "rbxassetid://322206910"})
             local button = page.button
             local Section = page:addSection()
             Section:addLabel("<font size='14'><b>Credits</b></font>")
-            Section:addLabel("This script was made by <b>Ikky#8337</b>")
-            Section:addLabel(utility:Create("TextLabel", {Text="v 3.0", TextXAlignment=Enum.TextXAlignment.Right}))
+            Section:addLabel("Owner <b>Ikky#8337</b>")
+            Section:addLabel("Tester <b>Unknown???</b>")
             button.MouseButton1Click:Connect(function()
                 self:SelectPage(page, true)
             end)
