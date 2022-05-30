@@ -3455,22 +3455,22 @@
                 elseif textbox.Text == "" or tonumber(textbox.Text) >= max then
                     value = self:updateSlider(slider, nil, max, min, max)
                     callback(value)
-                elseif textbox.Text ~= "" then
-                    value = self:updateSlider(slider, nil, tonumber(textbox.Text), min, max)
+                elseif textbox.Text ~= "" or tunumber(textbox.Text) >= max or tonumber(textbox.Text) <= min then
+                    value = self:updateSlider(slider, nil, tonumber(textbox.Text) or min or max, min, max)
                     callback(value)
                 end
 
                 fill.Size = UDim2.new(math.clamp((textbox.Text - min) / (max - min), 0, 1), 0, 1, 0) 
             end)
             
-            textbox:GetPropertyChangedSignal("Text"):Connect(function()
+            --[[textbox:GetPropertyChangedSignal("Text"):Connect(function()
                 local text = textbox.Text
 
-                if text ~= "" or not tonumber(text) > max or not tonumber(text) < min then	
+                if text ~= "" then	
                     value = self:updateSlider(slider, nil, tonumber(text), min, max)
                     callback(value)
                 end
-            end)
+            end)]]
             
             if search then
                 config.Title, config.Default, config.Min, config.Max, config.Increment, config.Callback, config.Search, config.ToolTipText = title, default, min, max, inc, callback, search, ToolTipText
