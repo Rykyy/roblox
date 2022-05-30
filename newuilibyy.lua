@@ -4026,7 +4026,7 @@
                         ZIndex = 3,
                         Font = Enum.Font.Gotham,
                         RichText = true,
-                        Text = table.find(multiList, value) and "<b><u>" .. value .. "</u></b>" or value,
+                        Text = value,
                         TextColor3 = themes.TextColor,
                         TextSize = 12,
                         TextXAlignment = "Left",
