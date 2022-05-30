@@ -1611,20 +1611,13 @@
             
             -- variables
 
-            local Section = page:addSection()
-            Section:addKeybind({Title = "Toggle Ui", Default = Enum.KeyCode.LeftAlt, Callback = function()
+            local Section = page:addSection({Title = "<b>Ui Settings</b>"})
+            Section:addKeybind({Title = "Toggle Ui", Default = Enum.KeyCode.RightAlt, Callback = function()
                 self:toggle()
             end})
-            Section:addButton({Title = "Kill Gui", Callback = function()
+            Section:addButton({Title = "Destroy Gui", Callback = function()
                 self:toggle()
                 UI:Destroy()
-            end})
-            Section:addButton({Title = "Rejoin Game", Callback = function()
-                if #game:GetService("Players"):GetPlayers() <= 1 then
-                    game:GetService('TeleportService'):Teleport(game.PlaceId, player)
-                else
-                    game:GetService('TeleportService'):TeleportToPlaceInstance(game.PlaceId, game.JobId, player)
-                end
             end})
             return page
         end
@@ -1632,31 +1625,9 @@
             local page = page.new({library = self, Position = Enum.VerticalAlignment.Bottom, Title = "Info", icon = 322206910})
             local button = page.button
             local Section = page:addSection()
-            Section:addLabel("<font size='14'><b>Snxw Hub</b></font>")
-            Section:addLabel("This script was made by <b>Snxw</b> & <b>Kn0w</b>")
-            Section:addLabel(utility:Create("TextLabel", {Text="v 7.2.7", TextXAlignment=Enum.TextXAlignment.Right}))
-            Section:addLabel("<b>How to use</b>")
-            Section:addLabel("Only in some games you can use specific options for them, however you can use global options in most games.")
-            Section:addLabel("In the <b>Settings</b> section you can change the color, prefix (show or hide), among other options.")
-            Section:addButton({Title = "Discord", Callback = function()
-                local request = request or http_request or (syn and syn.request)
-                if not request then return end
-                local start = 6463
-                local invCode = 'ZvUJw2ZCWk'
-                for i = start-10, start+1 do wait()
-                    spawn(function()
-                        local success, errorMessage = pcall(function()
-                            request({Url = "http://127.0.0.1:"..tostring(i).."/rpc?v=1",Method = "POST",Headers = {["Content-Type"] = "application/json",["Origin"] = "https://discord.com"},Body = game:GetService("HttpService"):JSONEncode({["cmd"] = "INVITE_BROWSER",["nonce"] = game:GetService("HttpService"):GenerateGUID(false),["args"] = {["invite"] = {["code"] = invCode,},["code"] = invCode}})})
-                        end)
-                        if not success then
-                            self:Notify("Snxw Hub", "You do not have the DiscordAPP application so the link to the discord was copied to your clipboard", 10)
-                            setclipboard("https://snxw.ga/invite")
-                        end
-                    end)
-                end
-            end})
-            Section:addLabel("<b>We are not responsible in case of prohibition, the use you give to this script is up to you.</b>")
-
+            Section:addLabel("<font size='14'><b>Credits</b></font>")
+            Section:addLabel("This script was made by <b>Ikky#8337</b>")
+            Section:addLabel(utility:Create("TextLabel", {Text="v 3.0", TextXAlignment=Enum.TextXAlignment.Right}))
             button.MouseButton1Click:Connect(function()
                 self:SelectPage(page, true)
             end)
