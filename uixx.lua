@@ -3447,13 +3447,16 @@
             
             textbox.FocusLost:Connect(function()
                 if not tonumber(textbox.Text) then
-                    value = self:updateSlider(slider, nil, nil, default or min, max, inc)
+                    value = self:updateSlider(slider, nil, default or min, min, max)
                     callback(value)
                 elseif textbox.Text == "" or tonumber(textbox.Text) <= min then
-                    value = self:updateSlider(slider, nil, nil, min, max, inc)
-                    callback(value)
+                    value = self:updateSlider(slider, nil, min, min, max)
+				    callback(value)
                 elseif textbox.Text == "" or tonumber(textbox.Text) >= max then
-                    value = self:updateSlider(slider, nil, nil, max, max, inc)
+                    value = self:updateSlider(slider, nil, max, min, max)
+                    callback(value)
+                elseif textbox.Text ~= "" then
+                    value = self:updateSlider(slider, nil, tonumber(textbox.Text), min, max)
                     callback(value)
                 end
 
