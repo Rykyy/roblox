@@ -3465,8 +3465,8 @@
             
             textbox:GetPropertyChangedSignal("Text"):Connect(function()
                 local text = textbox.Text
-                
-                if not allowed[text] then	
+
+                if text ~= "" then	
                     value = self:updateSlider(slider, nil, tonumber(text), min, max)
                     callback(value)
                 end
