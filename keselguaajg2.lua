@@ -3466,7 +3466,7 @@
             textbox:GetPropertyChangedSignal("Text"):Connect(function()
                 local text = textbox.Text
 
-                if text ~= "" and not tonumber(text) > max and not tonumber(text) < min then	
+                if text ~= "" or not tonumber(text) > max or not tonumber(text) < min then	
                     value = self:updateSlider(slider, nil, tonumber(text), min, max)
                     callback(value)
                 end
