@@ -4048,11 +4048,11 @@
                     end
                     if multi then
                         if table.find(multiList, value) then
-                            table.insert(multiList, value)
                             self:updateDropdown(dropdown, def .. " | " .. table.concat(multiList, ", ") or table.concat(multiList, ", "), multi, def, nil, callback, multiList)
-                        else
                             table.remove(multiList, table.find(multiList, value))
+                        else
                             self:updateDropdown(dropdown, def .. " | " .. table.concat(multiList, ", ") or table.concat(multiList, ", "), multi, def, nil, callback, multiList)
+                            table.insert(multiList, value)
                         end
                     else
                         self:updateDropdown(dropdown, def and def .. " | " .. value or value, multi, def, nil, callback)
