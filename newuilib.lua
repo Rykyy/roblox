@@ -1626,9 +1626,9 @@
             local button = page.button
             local Section = page:addSection()
             Section:addLabel("<font size='14'><b>Credits</b></font>")
-            Section:addLabel()
+            Section:addLabel(" ")
             Section:addLabel("Owner <b>Ikky#8337</b>")
-            Section:addLabel()
+            Section:addLabel(" ")
             Section:addLabel("Tester <b>Unknown???</b>")
             button.MouseButton1Click:Connect(function()
                 self:SelectPage(page, true)
