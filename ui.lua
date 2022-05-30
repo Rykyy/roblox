@@ -3447,13 +3447,13 @@
             
             textbox.FocusLost:Connect(function()
                 if not tonumber(textbox.Text) then
-                    textboxt.Text = default or min
+                    textbox.Text = default or min
                     callback(tonumber(textbox.Text))
                 elseif textbox.Text == "" or tonumber(textbox.Text) <= min then
-                    textboxt.Text = min
+                    textbox.Text = min
                     callback(tonumber(textbox.Text))
                 elseif textbox.Text == "" or tonumber(textbox.Text) >= max then
-                    textboxt.Text = max
+                    textbox.Text = max
                     callback(tonumber(textbox.Text))
                 end
 
